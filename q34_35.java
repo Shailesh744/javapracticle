@@ -1,44 +1,43 @@
-// Interface for multiple inheritance
-interface Interface1 {
-    void method1();
+interface Animal {
+    void eat();
 }
 
-interface Interface2 {
-    void method2();
+interface Mammal {
+    void move();
 }
 
-// Implementing multiple interfaces
-class MyClass implements Interface1, Interface2 {
-    public void method1() {
-        System.out.println("Method1 called");
+class Dog implements Animal, Mammal {
+    public void eat() {
+        System.out.println("Dog is eating");
     }
 
-    public void method2() {
-        System.out.println("Method2 called");
+    public void move() {
+        System.out.println("Dog is moving");
     }
 }
 
-// Interface for dynamic dispatching
-interface DynamicInterface {
-    void dynamicMethod();
-}
+class Cat implements Animal, Mammal {
+    public void eat() {
+        System.out.println("Cat is eating");
+    }
 
-// Implementing the dynamic dispatching interface
-class DynamicDispatch implements DynamicInterface {
-    public void dynamicMethod() {
-        System.out.println("Dynamic method called");
+    public void move() {
+        System.out.println("Cat is moving");
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        // Multiple inheritance example
-        MyClass obj = new MyClass();
-        obj.method1();
-        obj.method2();
+        Animal animal = new Dog();
+        animal.eat(); // Dog is eating
 
-        // Dynamic dispatching example
-        DynamicInterface dynamicObj = new DynamicDispatch();
-        dynamicObj.dynamicMethod();
+        animal = new Cat();
+        animal.eat(); // Cat is eating
+
+        Mammal mammal = new Dog();
+        mammal.move(); // Dog is moving
+
+        mammal = new Cat();
+        mammal.move(); // Cat is moving
     }
 }
